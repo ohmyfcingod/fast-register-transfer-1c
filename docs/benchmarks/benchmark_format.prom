@@ -1,0 +1,13 @@
+﻿# Матрица форматов транспорта: последний прогон
+# TYPE bpr_format_dump_seconds gauge
+# TYPE bpr_format_load_seconds gauge
+# TYPE bpr_format_bytes gauge
+bpr_format_dump_seconds{variant="bin"} 83.981
+bpr_format_load_seconds{variant="bin"} 61.174
+bpr_format_bytes{variant="bin"} 810419868
+bpr_format_dump_seconds{variant="bin+deflate9"} 107.991
+bpr_format_load_seconds{variant="bin+deflate9"} 80.957
+bpr_format_bytes{variant="bin+deflate9"} 117642747
+bpr_format_dump_seconds{variant="json"} 118.798
+bpr_format_load_seconds{variant="json"} 188.570
+bpr_format_bytes{variant="json"} 1854085889
