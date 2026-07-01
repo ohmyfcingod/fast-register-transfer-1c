@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c48fbee8-f20e-4cdd-bca3-524943de3fb7">
+  <producedTypes>
+    <selectionType typeId="889e47d6-6bdf-4b6d-95a9-86bb7554d056" valueTypeId="a21c6f6e-213a-4d8f-9c0a-0dfd067611a1"/>
+    <listType typeId="f11d4f5f-16fa-4289-96bd-5839d13aed64" valueTypeId="843b702c-fff5-417f-81a0-a38ecd43f54a"/>
+    <managerType typeId="5f6eb1c7-8adf-477c-aa36-62d95e0e46ca" valueTypeId="f201d5d6-7d9f-4e37-93a2-06e56188c22e"/>
+    <recordSetType typeId="a5c85491-9c52-49b4-9c16-2e679d2f7844" valueTypeId="169dd046-9b04-4917-9d41-04e0e608a182"/>
+    <recordKeyType typeId="ab347263-2e47-46a0-95a7-37e69ed9d272" valueTypeId="23d376b4-48f3-47b4-a90d-1e7179237956"/>
+    <recordType typeId="3ba0d33a-6da2-48a9-a00d-706142d42d8e" valueTypeId="51056d6f-59bc-4bee-b29e-7988c07512eb"/>
+    <recordManagerType typeId="a229dfd2-781a-4a84-9b3f-0385e4b61a0f" valueTypeId="593fb964-50e5-4e73-bc1a-807c2067ab8d"/>
+  </producedTypes>
+  <name>СинтетическиеДанныеПереноса</name>
+  <synonym>
+    <key>ru</key>
+    <value>Синтетические данные переноса</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="3eb2869f-ca62-4a3c-a565-e45e2e81793c">
+    <name>Сумма</name>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+  </resources>
+  <resources uuid="2d6e6084-5b81-4e83-9558-945d62c00209">
+    <name>Количество</name>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+  </resources>
+  <resources uuid="33a3dab8-454a-4750-b79e-e1aed4add26b">
+    <name>Текст</name>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+  </resources>
+  <resources uuid="5b34bee9-70f5-43cc-97d8-7813f74cc072">
+    <name>Момент</name>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+  </resources>
+  <resources uuid="24a03bce-c150-4169-8ed3-70306df89516">
+    <name>Флаг</name>
+    <type>
+      <types>Boolean</types>
+    </type>
+  </resources>
+  <dimensions uuid="d464ea8d-d103-46aa-ae15-39d047a063e1">
+    <name>Линия</name>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>12</precision>
+      </numberQualifiers>
+    </type>
+  </dimensions>
+</mdclass:InformationRegister>

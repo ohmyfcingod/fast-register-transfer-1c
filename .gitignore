@@ -1,0 +1,16 @@
+# 1C:EDT derived artifacts (rebuilt on import; .project and .settings are versioned — EDT needs them)
+**/DT-INF/
+
+# Backups and logs
+*.bak*
+*.log
+
+# Python cache
+__pycache__/
+
+# Local-only notes/secrets
+*.local.md
+
+# Windows junk
+Thumbs.db
+desktop.ini

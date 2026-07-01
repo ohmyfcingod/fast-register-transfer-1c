@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="9a5f6473-4a76-46df-b19c-95435292c4e9">
+  <producedTypes>
+    <objectType typeId="7125da36-9a8f-4a0f-ab6e-18813d16f856" valueTypeId="b211a693-136e-4eef-9a1a-fe7aa650c588"/>
+    <managerType typeId="e765e4d3-4115-4afd-94e5-4decbaaa02f2" valueTypeId="653278f4-91b1-4594-9e60-cedd25ed4041"/>
+  </producedTypes>
+  <name>БыстрыйПереносРегистров</name>
+  <synonym>
+    <key>ru</key>
+    <value>Быстрый перенос регистров</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.БыстрыйПереносРегистров.Form.Форма</defaultForm>
+  <forms uuid="2a50956c-c6d3-44e3-b099-6d450db0a389">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+  </forms>
+</mdclass:DataProcessor>
