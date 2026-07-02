@@ -804,7 +804,7 @@
         <extInfo xsi:type="form:HtmlFieldExtInfo">
           <width>60</width>
           <autoMaxWidth>true</autoMaxWidth>
-          <height>7</height>
+          <height>3</height>
           <autoMaxHeight>true</autoMaxHeight>
           <horizontalStretch>true</horizontalStretch>
         </extInfo>
@@ -837,7 +837,6 @@
                 </extInfo>
               </extendedTooltip>
               <commandName>Form.Command.ВыполнитьПлан</commandName>
-              <buttonImportance>Important</buttonImportance>
               <representation>Auto</representation>
               <autoMaxWidth>true</autoMaxWidth>
               <autoMaxHeight>true</autoMaxHeight>
@@ -1325,6 +1324,12 @@
               <showInFooter>true</showInFooter>
               <extInfo xsi:type="form:LabelFieldExtInfo"/>
             </items>
+            <autoCommandBar>
+              <name>ПланТестовТаблицаКоманднаяПанель</name>
+              <id>364</id>
+              <horizontalAlign>Left</horizontalAlign>
+              <autoFill>true</autoFill>
+            </autoCommandBar>
             <extendedTooltip>
               <name>ПланТестовТаблицаРасширеннаяПодсказка</name>
               <id>335</id>
@@ -1340,15 +1345,6 @@
               <id>363</id>
               <autoFill>true</autoFill>
             </contextMenu>
-            <autoCommandBar>
-              <name>ПланТестовТаблицаКоманднаяПанель</name>
-              <id>364</id>
-              <horizontalAlign>Left</horizontalAlign>
-              <autoFill>true</autoFill>
-            </autoCommandBar>
-            <extInfo xsi:type="form:TableExtInfo">
-              <horizontalStretch>true</horizontalStretch>
-            </extInfo>
           </items>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -2226,9 +2222,7 @@
     <id>18</id>
     <valueType>
       <types>Date</types>
-      <dateQualifiers>
-        <dateFractions>DateTime</dateFractions>
-      </dateQualifiers>
+      <dateQualifiers/>
     </valueType>
   </attributes>
   <attributes>
@@ -2236,9 +2230,7 @@
     <id>19</id>
     <valueType>
       <types>Date</types>
-      <dateQualifiers>
-        <dateFractions>DateTime</dateFractions>
-      </dateQualifiers>
+      <dateQualifiers/>
     </valueType>
   </attributes>
   <attributes>
@@ -2432,7 +2424,6 @@
         <types>String</types>
       </valueType>
     </columns>
-    <savedInSettings>true</savedInSettings>
   </attributes>
   <attributes>
     <name>ПланВыполняется</name>
