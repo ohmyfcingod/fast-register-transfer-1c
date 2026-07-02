@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="91f5ad2d-7087-405b-8764-32d6490735bf">
+  <producedTypes>
+    <selectionType typeId="da5b38f0-017b-43c8-a474-dedb7bd1dc9e" valueTypeId="5c5d044a-9aec-4d80-9052-0460636e82a7"/>
+    <listType typeId="e39cc85b-91e6-4198-90a4-5b9b508be3b7" valueTypeId="e860c37a-180b-4280-bb46-13184010ba9d"/>
+    <managerType typeId="7a8b4a53-c241-4865-9747-10426bb3f1f8" valueTypeId="7f43eb35-b692-4cdc-b8c8-57fa35a464aa"/>
+    <recordSetType typeId="53b439e7-3299-413d-b506-1e907323ab69" valueTypeId="68e2c21a-95bf-46c3-8d3a-061a68c292e6"/>
+    <recordKeyType typeId="8d0ce07e-7e0b-4e08-bfca-d5c9912e6b9f" valueTypeId="27dabbe0-1500-4532-a5b5-6190b4e393a1"/>
+    <recordType typeId="c33f385d-c16c-452c-aad8-88d3cddef13b" valueTypeId="bb82ad96-ac16-4f35-95c6-5a1646bd957f"/>
+    <recordManagerType typeId="5a0a8f7f-5ca1-4b85-b13d-e83754155ca1" valueTypeId="4cc74c7a-c474-4f22-9bed-b619b630bb58"/>
+  </producedTypes>
+  <name>СложныеТипыПереноса</name>
+  <synonym>
+    <key>ru</key>
+    <value>Сложные типы переноса</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="790f778d-dbf6-4dd1-930e-0c2b317ba97a">
+    <name>Идентификатор</name>
+    <type>
+      <types>UUID</types>
+    </type>
+  </resources>
+  <resources uuid="fa8daca3-9261-4453-9ba8-d5004ebce27e">
+    <name>Хранилище</name>
+    <type>
+      <types>ValueStorage</types>
+    </type>
+  </resources>
+  <resources uuid="c0d59d2d-c65f-42ef-8a1d-b5d2ed982045">
+    <name>Ссылка</name>
+    <type>
+      <types>AnyRef</types>
+    </type>
+  </resources>
+  <resources uuid="b8677f94-135c-44ff-b2ae-ee8cb5ac9ebd">
+    <name>Составной</name>
+    <type>
+      <types>Number</types>
+      <types>String</types>
+      <types>Date</types>
+      <types>Boolean</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+      <dateQualifiers/>
+    </type>
+  </resources>
+  <dimensions uuid="e0e5d0c2-38be-4cde-ae34-d12d3ecef07d">
+    <name>Линия</name>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>12</precision>
+      </numberQualifiers>
+    </type>
+  </dimensions>
+</mdclass:InformationRegister>

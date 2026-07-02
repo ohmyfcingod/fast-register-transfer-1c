@@ -417,7 +417,7 @@
           <id>225</id>
           <title>
             <key>ru</key>
-            <value>Отбор по полю Период при выгрузке (РН/РБ и периодические РС; для регистров без поля Период игнорируется). Пустая дата - без нижней границы. Частичную выгрузку нельзя грузить с полной очисткой - только режимом «Дозапись».</value>
+            <value>Отбор по полю Период при выгрузке (РН/РБ и периодические РС; смешивать с регистрами без поля Период запрещено - выгружайте их отдельно). Пустая дата - без нижней границы. Частичную выгрузку нельзя грузить с полной очисткой - только режимом «Дозапись».</value>
           </title>
           <type>Label</type>
         </extendedTooltip>
@@ -981,6 +981,32 @@
                 </extInfo>
               </extendedTooltip>
               <commandName>Form.Command.МатрицаФормата</commandName>
+              <buttonImportance>Normal</buttonImportance>
+              <representation>Auto</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <representationInContextMenu>Auto</representationInContextMenu>
+            </items>
+            <items xsi:type="form:Button">
+              <name>ТестыРевьюV2</name>
+              <id>269</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>ТестыРевьюV2РасширеннаяПодсказка</name>
+                <id>270</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Command.ТестыРевьюV2</commandName>
               <buttonImportance>Normal</buttonImportance>
               <representation>Auto</representation>
               <autoMaxWidth>true</autoMaxWidth>
@@ -2177,6 +2203,27 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>МатрицаФормата</name>
+      </handler>
+    </action>
+    <currentRowUse>Auto</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ТестыРевьюV2</name>
+    <title>
+      <key>ru</key>
+      <value>Тесты ревью v2</value>
+    </title>
+    <id>13</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Тесты по находкам ревью v2: path traversal из очереди (валидатор имени файла), round-trip сложных типов через bin/json, отмена выгрузки с зомби-воркерами (изоляция подпапками Run_*).</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ТестыРевьюV2</name>
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>
