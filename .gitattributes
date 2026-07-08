@@ -1,0 +1,21 @@
+# Нормализуем перевод строки в репозитории (гасит CRLF-варнинги на Windows).
+* text=auto
+
+# Исходники 1С — UTF-8 текст.
+*.bsl  text
+*.mdo  text
+*.form text
+*.md   text
+*.ps1  text
+*.prom text
+*.json text
+*.txt  text
+
+# Бинарные артефакты — не трогать переводом строки.
+*.cfe binary
+*.cf  binary
+*.epf binary
+*.erf binary
+*.dt  binary
+*.png binary
+*.jpg binary

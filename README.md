@@ -4,7 +4,39 @@
 ![Platform: 1C:Enterprise 8.5](https://img.shields.io/badge/1C%3AEnterprise-8.5-blue.svg)
 ![Delivery: .cfe extension](https://img.shields.io/badge/delivery-.cfe%20AddOn-orange.svg)
 
-> **TL;DR (EN).** Fast binary transfer of register record sets (information / accumulation / accounting registers) between 1C:Enterprise infobases. Record sets are serialized into binary chunks plus a `manifest.json`, moved as files, and loaded back with recorder-level replacement — orders of magnitude faster than XML/XDTO exchange plans. Ships as a self-contained configuration extension (`БПР_` prefix, AddOn, compatibility mode 8.5.1) with zero dependencies on the host configuration. Measured throughput: ~90–180k rows/s export, ~70–130k rows/s import; a 5-million-row round-trip passes a 1:1 data check. Parallel background-job workers, optional deflate compression, portable JSON chunk format, live progress with cancellation, and resume after interruption are built in.
+> **TL;DR (EN).** Fast binary transfer of register record sets (information / accumulation / accounting registers) between 1C:Enterprise infobases. Record sets are serialized into binary chunks plus a `manifest.json`, moved as files, and loaded back with recorder-level replacement — orders of magnitude faster than XML/XDTO exchange plans. Ships as a self-contained configuration extension (`БПР_` prefix, AddOn, compatibility mode 8.5.1) with zero dependencies on the host configuration. Measured throughput: ~90k–240k rows/s export (up to 241k on MS SQL with 8 threads), ~70–130k rows/s import; a 5-million-row round-trip passes a 1:1 data check. Parallel background-job workers, optional deflate compression, portable JSON chunk format, live progress with cancellation, and resume after interruption are built in.
+
+📖 [Быстрый старт](QUICKSTART.md) · 🗒️ [Changelog](CHANGELOG.md) · 🐇 [Басня «Воз и Гонцы»](FABLE.md)
+
+<p align="center">
+  <img src="pictures/ПланТестов.png" width="88%" alt="Панель тестов с планом прогона и совой-индикатором"><br>
+  <em>Панель самотеста: редактируемый план прогона с пресетами, живые статусы и сова-индикатор «сервер жив, а не завис».</em>
+</p>
+
+## Итог (что доказано на стендах)
+
+| Что | Результат |
+|---|---|
+| Round-trip 5 млн строк (bin / deflate / json) | 1:1, сверка байт-в-байт ✅ |
+| Пик выгрузки — MS SQL Server, 8 потоков | **241k строк/с (×4,72)** |
+| Пик загрузки — MS SQL Server, 8 потоков | **72,8k строк/с (×4,24)** — запись тоже параллелится |
+| Сжатие `deflate=9` | 14,8% исходного размера (151,5 → 22,4 МБ на 1 млн строк) |
+| RabbitMQ round-trip «папка → очередь → папка» | SHA-256 совпал после брокера ✅ |
+| Самотест «сборочный smoke» | 4/4 ✅ (path traversal, сложные типы bin+json, отмена/зомби-воркеры, подчинённый регистр) |
+| Зависимостей от базовой конфигурации | 0 (расширение `БПР_`, AddOn, 6 объектов метаданных) |
+| Ошибок EDT в поставке | 0 |
+
+Цифры — с двух стендов (файловая ИБ на NVMe и MS SQL Server на SSD), полные таблицы ниже в разделе [«Производительность»](#производительность). Дефолты выбраны по замерам, не предположениям.
+
+## Интерфейс
+
+| Выгрузка | Выбор регистров |
+|---|---|
+| [![Выгрузка](pictures/Выгрузка.png)](pictures/Выгрузка.png) | [![Выбор регистров](pictures/ВыборРегистров.png)](pictures/ВыборРегистров.png) |
+| Профиль СУБД, формат чанков (bin/JSON), сжатие, потоки, отбор по периоду. | Чек-лист регистров конфигурации — РС / РН / РБ по именам. |
+| **Отчёт** | **RabbitMQ** |
+| [![Отчёт](pictures/Отчёт.png)](pictures/Отчёт.png) | [![RabbitMQ](pictures/RabbitMQ.png)](pictures/RabbitMQ.png) |
+| Сводная таблица шагов + сворачиваемые секции с полными логами. | Транспорт через шину: очередь, хост, компонента PinkRabbitMQ. |
 
 ## Что это и зачем
 
@@ -12,7 +44,7 @@
 
 БПР решает ровно эту задачу: наборы записей регистров (сведений, накопления, бухгалтерии) сериализуются в **бинарные чанки** (`ЗначениеВФайл`) с описанием в `manifest.json`, переносятся файлами (или через шину — см. roadmap) и загружаются **замещением по регистратору** (независимые РС — дозаписью). Движок работает с любыми регистрами по именам-параметрам.
 
-Поставка — **расширение конфигурации**: префикс `БПР_`, назначение `AddOn`, режим совместимости 8.5.1, **ноль зависимостей** от базовой конфигурации. Подключается к любой конфигурации (включая БСП-релизы) без правки основной. Всего 8 объектов метаданных.
+Поставка — **расширение конфигурации**: префикс `БПР_`, назначение `AddOn`, режим совместимости 8.5.1, **ноль зависимостей** от базовой конфигурации. Подключается к любой конфигурации (включая БСП-релизы) без правки основной. Всего 6 объектов метаданных.
 
 ## Ключевые возможности
 
@@ -202,13 +234,16 @@ docker run -d --name bpr-rabbit -p 5672:5672 -p 15672:15672 \
 ## Структура репозитория
 
 ```
-├── src/          # проект 1C:EDT: .mdo, BSL-модули, форма (.project, .settings; DT-INF не версионируется)
-├── build/        # артефакт БыстрыйПереносРегистров.cfe + build.ps1 (пересборка .cfe из XML: нужна файловая ИБ-хост, см. шапку скрипта)
-├── docs/         # УстановкаИЭксплуатация.md (установка, грабли, профили СУБД), АрхитектураИУроки.md (решения и уроки ревью)
-└── CHANGELOG.md  # история версий (Keep a Changelog)
+├── src/           # проект 1C:EDT: .mdo, BSL-модули, форма (.project, .settings; DT-INF не версионируется)
+├── build/         # артефакт БыстрыйПереносРегистров.cfe + build.ps1 (пересборка .cfe из XML: нужна файловая ИБ-хост, см. шапку скрипта)
+├── docs/          # УстановкаИЭксплуатация.md (установка, грабли, профили СУБД), АрхитектураИУроки.md (решения и уроки ревью)
+├── pictures/      # скриншоты интерфейса
+├── QUICKSTART.md  # пять минут от .cfe до первого переноса
+├── CHANGELOG.md   # история версий (Keep a Changelog)
+└── FABLE.md       # басня «Воз и Гонцы» 🐇
 ```
 
-Ключевые объекты (8 объектов метаданных, самодостаточно):
+Ключевые объекты (6 объектов метаданных, самодостаточно):
 
 | Объект | Роль |
 |---|---|
