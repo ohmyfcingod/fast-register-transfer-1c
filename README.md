@@ -6,7 +6,7 @@
 
 > **TL;DR (EN).** Fast binary transfer of register record sets (information / accumulation / accounting registers) between 1C:Enterprise infobases. Record sets are serialized into binary chunks plus a `manifest.json`, moved as files, and loaded back with recorder-level replacement — orders of magnitude faster than XML/XDTO exchange plans. Ships as a self-contained configuration extension (`БПР_` prefix, AddOn, compatibility mode 8.5.1) with zero dependencies on the host configuration. Measured throughput: ~90k–240k rows/s export (up to 241k on MS SQL with 8 threads), ~70–130k rows/s import; a 5-million-row round-trip passes a 1:1 data check. Parallel background-job workers, optional deflate compression, portable JSON chunk format, live progress with cancellation, and resume after interruption are built in.
 
-📖 [Быстрый старт](QUICKSTART.md) · 🗒️ [Changelog](CHANGELOG.md) · 🐇 [Басня «Воз и Гонцы»](FABLE.md)
+📖 [Быстрый старт](QUICKSTART.md) · 📝 [Статья (как это строилось)](docs/ARTICLE.md) · 🗒️ [Changelog](CHANGELOG.md) · 🐇 [Басня «Воз и Гонцы»](FABLE.md)
 
 <p align="center">
   <img src="pictures/ПланТестов.png" width="88%" alt="Панель тестов с планом прогона и совой-индикатором"><br>
@@ -250,7 +250,7 @@ docker run -d --name bpr-rabbit -p 5672:5672 -p 15672:15672 \
 ```
 ├── src/           # проект 1C:EDT: .mdo, BSL-модули, форма (.project, .settings; DT-INF не версионируется)
 ├── build/         # артефакт БыстрыйПереносРегистров.cfe + build.ps1 (пересборка .cfe из XML: нужна файловая ИБ-хост, см. шапку скрипта)
-├── docs/          # УстановкаИЭксплуатация.md (установка, грабли, профили СУБД), АрхитектураИУроки.md (решения и уроки ревью)
+├── docs/          # УстановкаИЭксплуатация.md, АрхитектураИУроки.md (решения и уроки ревью), ARTICLE.md (статья формата Инфостарт)
 ├── pictures/      # скриншоты интерфейса
 ├── QUICKSTART.md  # пять минут от .cfe до первого переноса
 ├── CHANGELOG.md   # история версий (Keep a Changelog)
