@@ -13,6 +13,12 @@
   <em>Панель самотеста: редактируемый план прогона с пресетами, живые статусы и сова-индикатор «сервер жив, а не завис».</em>
 </p>
 
+<p align="center">
+<a href="https://infostart.ru/public/2735324/">
+  <img src="https://infostart.ru/bitrix/templates/sandbox_empty/assets/tpl/abo/img/logo.svg" alt="Логотип Инфостарт">
+</a> — <a href="https://infostart.ru/public/2735324/">Публикация на Инфостарт</a>
+</p>
+
 ## Итог (что доказано на стендах)
 
 | Что | Результат |
